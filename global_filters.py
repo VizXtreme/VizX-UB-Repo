@@ -19,6 +19,8 @@ async def global_filter_listener(client: Client, message: Message):
         return
 
     data = g_filters[text_lower]
+    if isinstance(data, str):
+        data = {"type": "text", "content": data, "manual_only": False}
 
     if data.get("manual_only", False):
         return
@@ -226,6 +228,8 @@ async def list_global_filters(client: Client, message: Message):
     
     text = "<b>Global Filters:</b>\n\n"
     for index, (key, value) in enumerate(sorted(g_filters.items()), start=1):
+        if isinstance(value, str):
+            value = {"type": "text", "content": value, "manual_only": False}
         is_personal = " (personal)" if value.get("manual_only", False) else ""
         text += f"{index}. <code>{key}</code>{is_personal}\n"
     
@@ -246,6 +250,8 @@ async def trigger_global_filter(client: Client, message: Message):
         return await message.edit(f"<b>Global filter not found for</b> <code>{keyword}</code>")
     
     data = g_filters[keyword]
+    if isinstance(data, str):
+        data = {"type": "text", "content": data, "manual_only": False}
     reply_type = data.get("type")
     content = data.get("content")
     
