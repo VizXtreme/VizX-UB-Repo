@@ -26,8 +26,8 @@ from utils import gitrepo, modules_help, prefix, python_version, userbot_version
 
 @Client.on_message(filters.command(["support", "repo"], prefix) & filters.me)
 async def support(_, message: Message):
-    devs = ["@Qbtaumai", "@H4T3H46K3R"]
-    random.shuffle(devs)
+    dev = ["@VizXtreme"]
+    random.shuffle(dev)
 
     commands_count = 0.0
     for module in modules_help:
@@ -46,12 +46,11 @@ async def support(_, message: Message):
         f"  │  Commands: <code>{int(commands_count)}</code>\n"
         "  │\n"
         "  ├─ Links\n"
-        "  │  <a href='https://github.com/The-MoonTg-project/Moon-Userbot'>GitHub Repository</a>\n"
-        "  │  <a href='https://github.com/The-MoonTg-project/custom_modules'>Custom Modules</a>\n"
-        "  │  <a href='https://github.com/The-MoonTg-project/Moon-Userbot/blob/master/LICENSE'>License</a>\n"
+        "  │  <a href='https://github.com/VizXtreme/VizXtreme-UB'>GitHub Repository</a>\n"
+        "  │  <a href='https://github.com/VizX-UB-Repo/custom_modules'>Custom Modules</a>\n"
         "  │\n"
-        "  ├─ Devs\n"
-        f"  │  {', '.join(devs)}\n"
+        "  ├─ Dev\n"
+        f"  │  {', '.join(dev)}\n"
         "  │\n"
         "  ╰─────────────",
         disable_web_page_preview=True,
@@ -74,7 +73,7 @@ async def version(client: Client, message: Message):
         if remote_url.endswith(".git"):
             remote_url = remote_url[:-4]
     except KeyError:
-        remote_url = "https://github.com/The-MoonTg-project/VizX-UB"
+        remote_url = "https://github.com/VizXtreme/VizXtreme-UB"
 
     head_sha = gitrepo.head()
     hexsha = head_sha.decode("utf-8")

@@ -26,7 +26,7 @@ async def ping(client: Client, message: Message):
     latency = await client.ping()
     ping_text = (
         f"<b>⩥ Pong!</b> <code>{latency}ms</code>\n"
-        f"<b>⩥ Core:</b> <code>VizX-UB (Speed + Power)</code>"
+        f"<b>⩥ Core:</b> <code>VizX-UB</code>"
     )
     await message.edit(ping_text)
 
